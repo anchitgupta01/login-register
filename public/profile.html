@@ -12,7 +12,7 @@
 
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      /* background-color: #f2f2f2; */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -21,12 +21,12 @@
 
     table {
       border-collapse: collapse;
-      width: 100%;
+      /* width: 100%; */
       max-width: 600px;
       background-color: #fff;
       border-radius: 8px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      margin: 20px;
+      /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+      /* margin: 20px; */
     }
 
     th, td {
@@ -34,50 +34,156 @@
       text-align: left;
       border-bottom: 1px solid #ccc;
     }
-
-    th {
-      background-color: #f2f2f2;
+    /* .tds{
+      max-width: 100px;
+    } */
+    .th:hover {
+      background-color: #696bda;
     }
+    .switch-container {
+            text-align: center;
+            /* margin-bottom: 20px; */
+            /* display: flex; */
+            border: 1px solid black;
+    width: fit-content;
+    background-color: blue;
+    padding: 5px;
+    border-radius: 30px;
+        }
 
+        .switch-button {
+          padding: 5px 7px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+    color: white;
+    border-radius: 30px;
+        }
+        .plan-table {
+            display: none;
+        }
+
+        .active-table {
+            display: block;
+        }
   </style>
 </head>
 <body>
-  <table>
-    <tr>
-      <th>Monthly</th>
-      <th>Price</th>
-      <th>Quality</th>
-      <th>Resolution</th>
-      <th>Supported Devices</th>
+
+  <table style="display: flex; flex-direction: row;">
+   
+      <tr style="background-color: white;">
+        <th > <div class="switch-container">
+        <button class="switch-button" id="monthlySwitch">Monthly</button>
+        <button class="switch-button" id="yearlySwitch">Yearly</button>
+      </div></th>
+      <!-- <th>Monthly</th> -->
+      <th class="th">Mobile</th>
+      <th class="th">Basic</th>
+      <th class="th">Standard</th>
+      <th class="th">Premium</th>
+      
     </tr>
-    <tr>
-      <td>Mobile</td>
+  
+    <td style="padding: 0px; box-shadow: none;" colspan="5">
+    <table      class="plan-table active-table" id="monthlyTable">
+    <tr style="padding: 0px; box-shadow: none;">
+      <td style="
+      width: 180px;" class="tds">Price</td>
       <td>$100.00</td>
-      <td>Good</td>
-      <td>480p</td>
-      <td>Phone, Tablet</td>
-    </tr>
-    <tr>
-      <td>Basic</td>
       <td>$200.00</td>
-      <td>Good</td>
-      <td>480p</td>
-      <td>Phone, Tablet, Computer, TV</td>
-    </tr>
-    <tr>
-      <td>Standard</td>
       <td>$500.00</td>
-      <td>Better</td>
-      <td>1080p</td>
-      <td>Phone, Tablet, Computer, TV</td>
+      <td>$700.00</td>
     </tr>
     <tr>
-      <td>Premium</td>
-      <td>$700.00</td>
+      <td class="tds">Quality</td>
+      <td>Good</td>
+      <td>Good</td>
+      <td>Better</td>
       <td>Best</td>
+    </tr>
+    <tr>
+      <td class="tds">Resolution</td>
+      
+      <td>480p</td>
+      <td>480p</td>
+      <td>1080p</td>
       <td>4K+HDR</td>
-      <td>Phone, Tablet, Computer, TV</td>
+    </tr>
+    <tr>
+      <td class="tds">Supported Devices</td>
+      
+      <td>Phone,<br> Tablet</td>
+      <td>Phone, <br> Tablet, <br>Computer, <br> TV</td>
+      <td>Phone, <br>Tablet,<br> Computer, <br>TV</td>
+      <td>Phone,<br> Tablet,<br> Computer,<br> TV</td>
     </tr>
   </table>
-</body>
+
+  
+    <table class="plan-table" id="yearlyTable">
+      <tr style="padding: 0px; box-shadow: none;">
+        <td style="
+        width: 180px;" class="tds">Price</td>
+        <td>$1000.00</td>
+        <td>$2000.00</td>
+        <td>$5000.00</td>
+        <td>$7000.00</td>
+      </tr>
+      <tr>
+        <td class="tds">Quality</td>
+        <td>Good</td>
+        <td>Good</td>
+        <td>Better</td>
+        <td>Best</td>
+      </tr>
+      <tr>
+        <td class="tds">Resolution</td>
+        
+        <td>480p</td>
+        <td>480p</td>
+        <td>1080p</td>
+        <td>4K+HDR</td>
+      </tr>
+      <tr>
+        <td class="tds">Supported Devices</td>
+        
+        <td>Phone,<br> Tablet</td>
+        <td>Phone, <br> Tablet, <br>Computer, <br> TV</td>
+        <td>Phone, <br>Tablet,<br> Computer, <br>TV</td>
+        <td>Phone,<br> Tablet,<br> Computer,<br> TV</td>
+      </tr>
+  </table>
+  </td>
+  </table>
+
+
+  <script>
+    const monthlySwitch = document.getElementById('monthlySwitch');
+    
+    const yearlySwitch = document.getElementById('yearlySwitch');
+    
+    const monthlyTable = document.getElementById('monthlyTable');
+    const yearlyTable = document.getElementById('yearlyTable');
+    
+  monthlySwitch.addEventListener('click', () => {
+      monthlyTable.classList.add('active-table');
+      yearlyTable.classList.remove('active-table');
+      monthlySwitch.style.backgroundColor ='white';
+      monthlySwitch.style.color ='blue';
+      yearlySwitch.style.backgroundColor ='transparent';
+      yearlySwitch.style.color ='white';
+    });
+    
+    yearlySwitch.addEventListener('click', () => {
+      yearlyTable.classList.add('active-table');
+      monthlyTable.classList.remove('active-table');
+      yearlySwitch.style.backgroundColor ='white';
+      yearlySwitch.style.color ='blue';
+      monthlySwitch.style.backgroundColor ='transparent';
+      monthlySwitch.style.color ='white';
+    });
+  </script>
+    </body>
 </html>
