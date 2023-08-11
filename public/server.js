@@ -19,12 +19,12 @@ app.use(express.static('public'));
 
 // Serve the register.html file directly
 app.get('/register.html', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/register.html'));
+    res.sendFile(path.join(__dirname, 'public/register.html'));
   });
 
 // Serve the login.html page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/login.html'));
+    res.sendFile(path.join(__dirname, '/login.html'));
   });
 
   app.post('/login', (req, res) => {
