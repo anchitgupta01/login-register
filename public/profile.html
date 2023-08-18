@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Subscription Plans</title>
+
+
   <style>
     /* Reset some default styling */
     * {
@@ -67,6 +69,10 @@
         .active-table {
             display: block;
         }
+        .onClick{
+          background-color: white;
+         color: blue;
+        }
   </style>
 </head>
 <body>
@@ -75,7 +81,7 @@
    
       <tr style="background-color: white;">
         <th > <div class="switch-container">
-        <button class="switch-button" id="monthlySwitch">Monthly</button>
+        <button class="switch-button onClick" id="monthlySwitch">Monthly</button>
         <button class="switch-button" id="yearlySwitch">Yearly</button>
       </div></th>
       <!-- <th>Monthly</th> -->
@@ -87,7 +93,8 @@
     </tr>
   
     <td style="padding: 0px; box-shadow: none;" colspan="5">
-    <table      class="plan-table active-table" id="monthlyTable">
+
+    <table class="plan-table active-table " id="monthlyTable">
     <tr style="padding: 0px; box-shadow: none;">
       <td style="
       width: 180px;" class="tds">Price</td>
@@ -170,20 +177,18 @@
   monthlySwitch.addEventListener('click', () => {
       monthlyTable.classList.add('active-table');
       yearlyTable.classList.remove('active-table');
-      monthlySwitch.style.backgroundColor ='white';
-      monthlySwitch.style.color ='blue';
-      yearlySwitch.style.backgroundColor ='transparent';
-      yearlySwitch.style.color ='white';
+
+      monthlySwitch.classList.add('onClick');
+      yearlySwitch.classList.remove('onClick');
     });
     
     yearlySwitch.addEventListener('click', () => {
       yearlyTable.classList.add('active-table');
       monthlyTable.classList.remove('active-table');
-      yearlySwitch.style.backgroundColor ='white';
-      yearlySwitch.style.color ='blue';
-      monthlySwitch.style.backgroundColor ='transparent';
-      monthlySwitch.style.color ='white';
+      monthlySwitch.classList.remove('onClick');
+      yearlySwitch.classList.add('onClick');
     });
   </script>
+  <script src="../src/server.js" type="js"></script>
     </body>
 </html>
